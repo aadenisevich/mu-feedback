@@ -24,23 +24,32 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "100vw",
+        height: "100vh",
+      }}
+    >
+      <main
         style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: 15,
+          width: "100%",
+          height: "100%",
+          maxWidth: 560,
+          boxShadow: "1px 2px 10px grba(255,255,255,.5)",
+          boxSizing: "border-box",
         }}
       >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
+        {children}
+      </main>
+      <footer></footer>
+    </div>
   )
 }
 
