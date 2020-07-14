@@ -7,14 +7,17 @@ function Button({
   bordered = false,
   width = 250,
   marginLeft = 0,
+  disabled = false,
 }) {
   return (
     <div
-      onClick={onClick}
+      onClick={() => {
+        if (!disabled) onClick()
+      }}
       style={{
         background: color,
         padding: 15,
-        color: color === "white" ? "black" : "white",
+        color: disabled ? "#eee" : color === "white" ? "black" : "white",
         width,
         borderRadius: 5,
         marginTop: 10,
