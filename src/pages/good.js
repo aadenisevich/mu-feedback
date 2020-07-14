@@ -5,6 +5,7 @@ import ImageEmojiHappiness from "../components/image-emoji-happiness"
 import ImageYa from "../components/image-ya"
 import ImageG from "../components/image-g"
 import ImagePrd from "../components/image-prd"
+import { navigate } from "gatsby"
 
 function Good() {
   return (
@@ -35,7 +36,7 @@ function Good() {
         <div
           style={{ display: "flex", justifyContent: "center", width: "100%" }}
         >
-          <Button bordered width={150}>
+          <Button bordered width={150} onClick={() => navigate('https://yandex.ru/profile/112869737797?intent=reviews&utm_source=qr&utm_medium=qr_image&utm_campaign=v1&lr=213')}>
             <div style={{ display: "flex", justifyContent: "center", alignItems: 'center' }}>
               <div style={{ width: 30, height: 30, marginRight: 2 }}>
                 <ImageYa />
@@ -43,7 +44,7 @@ function Good() {
               <span>Яндекс</span>
             </div>
           </Button>
-          <Button bordered width={150} marginLeft={20}>
+          <Button bordered width={150} marginLeft={20} onClick={() => navigate('http://search.google.com/local/writereview?placeid=ChIJwaEVQI1JtUYRpfYCD0Ll3y0')}>
             <div style={{ display: "flex", justifyContent: "center", alignItems: 'center' }}>
               <div style={{ width: 20, height: 30, marginRight: 10 }}>
                 <ImageG />
@@ -55,7 +56,7 @@ function Good() {
         <div
           style={{ display: "flex", justifyContent: "center", width: "100%" }}
         >
-          <Button bordered width={320}>
+          <Button bordered width={320} onClick={() => navigate('https://prodoctorov.ru/new/rate/lpu/55003/')}>
             <div style={{ display: "flex" }}>
               <div style={{ width: "100%", height: 30 }}>
                 <ImagePrd />

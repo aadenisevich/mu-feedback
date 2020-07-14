@@ -1,6 +1,13 @@
 import React from "react"
 
-function Button({ children, onClick = () => {}, color = "white", bordered = false, width = 250, marginLeft = 0 }) {
+function Button({
+  children,
+  onClick = () => {},
+  color = "white",
+  bordered = false,
+  width = 250,
+  marginLeft = 0,
+}) {
   return (
     <div
       onClick={onClick}
@@ -11,10 +18,12 @@ function Button({ children, onClick = () => {}, color = "white", bordered = fals
         width,
         borderRadius: 5,
         marginTop: 10,
-        textAlign: 'center',
-        border: bordered ? '1px solid rgb(202, 202, 202)' : 'none',
+        textAlign: "center",
+        border: bordered ? "1px solid rgb(202, 202, 202)" : "none",
         marginLeft,
-        overflow: 'hidden'
+        overflow: "hidden",
+        cursor: "pointer",
+        userSelect: "none",
       }}
     >
       {children}
