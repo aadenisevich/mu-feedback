@@ -13,8 +13,10 @@ import Header from "./header"
 import "./layout.css"
 
 const setVh = () => {
-  let vh = window.innerHeight * 0.01
-  document.documentElement.style.setProperty("--vh", `${vh}px`)
+  if (typeof window !== "undefined") {
+    let vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty("--vh", `${vh}px`)
+  }
 }
 
 const Layout = ({ children }) => {
@@ -29,8 +31,9 @@ const Layout = ({ children }) => {
   `)
 
   setVh()
-  window.addEventListener("resize", setVh)
-
+  if (typeof window !== "undefined") {
+    window.addEventListener("resize", setVh)
+  }
   return (
     <div
       style={{
