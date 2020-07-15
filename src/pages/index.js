@@ -38,7 +38,7 @@ const IndexPage = () => (
         }}
         color="rgb(74, 191, 64)"
       >
-        Да, всё здорово!
+        <strong>Да, всё здорово!</strong>
       </Button>
       <Button
         onClick={() => {
@@ -46,7 +46,7 @@ const IndexPage = () => (
         }}
         color="rgb(179, 81, 77)"
       >
-        Нет, есть претензии
+        <strong>Нет, есть претензии</strong>
       </Button>
     </div>
   </Layout>

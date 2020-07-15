@@ -12,6 +12,11 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 
+const setVh = () => {
+  let vh = window.innerHeight * 0.01
+  document.documentElement.style.setProperty("--vh", `${vh}px`)
+}
+
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -23,6 +28,9 @@ const Layout = ({ children }) => {
     }
   `)
 
+  setVh()
+  window.addEventListener("resize", setVh)
+
   return (
     <div
       style={{
@@ -30,7 +38,7 @@ const Layout = ({ children }) => {
         flexDirection: "column",
         alignItems: "center",
         width: "100vw",
-        height: "100vh",
+        height: "calc(var(--vh, 1vh) * 100)",
       }}
     >
       <main
