@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Layout from "../components/layout"
 import Button from "../components/button"
 import ImageEmojiSad from "../components/image-emoji-sad"
@@ -6,9 +6,11 @@ import { navigate } from "gatsby"
 import { sendEmail } from "../utils/emailjs"
 
 function Bad({ location: { state } }) {
-  if (!state || !state.fio || !state.number) {
-    navigate("/")
-  }
+  useEffect(() => {
+    if (!state || !state.fio || !state.number) {
+      navigate("/")
+    }
+  }, [])
   console.log(state)
   const [message, setMessage] = useState(null)
   const [sendig, setSending] = useState(false)

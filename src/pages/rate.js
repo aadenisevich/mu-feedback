@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { navigate } from "gatsby"
 
 import Layout from "../components/layout"
@@ -7,9 +7,11 @@ import Button from "../components/button"
 import SEO from "../components/seo"
 
 const RatePage = ({ location: { state } }) => {
-  if (!state || !state.fio || !state.number) {
-    navigate("/")
-  }
+  useEffect(() => {
+    if (!state || !state.fio || !state.number) {
+      navigate("/")
+    }
+  }, [])
   return (
     <Layout>
       <SEO title="Home" />
@@ -26,7 +28,7 @@ const RatePage = ({ location: { state } }) => {
         </div>
       </div>
       <h2 style={{ textAlign: "center" }}>
-        {state.fio}, расскажите, Вам понравилось обслуживание в MelanomaUnit?
+        {state?.fio}, расскажите, Вам понравилось обслуживание в MelanomaUnit?
       </h2>
       <div
         style={{
