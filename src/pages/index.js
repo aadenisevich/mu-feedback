@@ -76,7 +76,7 @@ const IndexPage = () => {
           bordered
           color="rgb(227, 95, 87)"
           disabledColor="rgb(183, 147, 144)"
-          styles={{borderRadius: 30, boxShadow: '0 1px 10px rgba(183, 147, 144, .3)'}}
+          styles={{borderRadius: 30, alignItems: 'center',boxShadow: '0 1px 10px rgba(183, 147, 144, .3)'}}
         >
           <strong>Далее</strong>
         </Button>
