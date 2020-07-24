@@ -2,10 +2,14 @@ import React, { useState } from "react"
 import Layout from "../components/layout"
 import Button from "../components/button"
 import ImageEmojiSad from "../components/image-emoji-sad"
-import emailjs from "emailjs-com"
 import { navigate } from "gatsby"
+import { sendEmail } from "../utils/emailjs"
 
-function Bad() {
+function Bad({ location: { state } }) {
+  if (!state || !state.fio || !state.number) {
+    navigate("/")
+  }
+  console.log(state)
   const [message, setMessage] = useState(null)
   const [sendig, setSending] = useState(false)
   return (
@@ -16,7 +20,10 @@ function Bad() {
         </div>
       </div>
       <h2>Написать директору</h2>
-      <p>Расскажите, что Вам не понравилось и что мы можем делать лучше.</p>
+      <p>
+        <strong>{state?.fio}</strong>, расскажите, что Вам не понравилось и что
+        мы можем делать лучше.
+      </p>
       <p>
         Директор клиники накажет виновных, свяжется с Вами и предложит решение
         проблемы.
@@ -27,35 +34,16 @@ function Bad() {
         onChange={e => setMessage(e.target.value)}
         disabled={sendig}
       ></textarea>
-      {
-        sendig && <span>Запрос отпраляется...</span>
-      }
-      <div style={{ display: "flex", justifyContent: "center", marginTop: 40 }}>
+      {sendig && <span>Запрос отпраляется...</span>}
+      <div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>
         <Button
           disabled={sendig}
           bordered
-          onClick={() => {
+          onClick={async () => {
             setSending(true)
-            emailjs
-              .send(
-                "gmail",
-                "template_iMeASqf3",
-                { message },
-                "user_5OmOqtH8z8CtXfsY01Fad",
-                "55b10e404857a4304b6570809f717e43"
-              )
-              .then(
-                response => {
-                  console.log("SUCCESS!", response.status, response.text)
-                },
-                err => {
-                  console.log("FAILED...", err)
-                }
-              )
-              .finally(() => {
-                setSending(false)
-                navigate("/")
-              })
+            await sendEmail({ message, fio: state.fio, number: state.number })
+            setSending(false)
+            navigate("/")
           }}
         >
           Отправить

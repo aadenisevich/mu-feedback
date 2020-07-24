@@ -4,10 +4,12 @@ function Button({
   children,
   onClick = () => {},
   color = "white",
+  disabledColor = color,
   bordered = false,
   width = 250,
   marginLeft = 0,
   disabled = false,
+  styles = {}
 }) {
   return (
     <div
@@ -15,7 +17,7 @@ function Button({
         if (!disabled) onClick()
       }}
       style={{
-        background: color,
+        background: disabled ? disabledColor : color,
         padding: 15,
         color: disabled ? "#eee" : color === "white" ? "black" : "white",
         width,
@@ -27,6 +29,7 @@ function Button({
         overflow: "hidden",
         cursor: "pointer",
         userSelect: "none",
+        ...styles
       }}
     >
       {children}
