@@ -33,7 +33,7 @@ const IndexPage = () => {
         <br />
         <strong>А вы нашли. Мы это ценим.</strong>
       </p>
-      <p>Пожалуйста, представьтесь, чтобы мы могли применить скидку:</p>
+      <p>Пожалуйста, представьтесь:</p>
       <input
         placeholder="Ваше ФИО"
         onChange={({ target: { value } }) => setFio(value)}
