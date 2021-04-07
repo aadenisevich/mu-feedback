@@ -30,10 +30,6 @@ function Good({ location: { state } }) {
         <br />
         <strong>А вы нашли. Мы это ценим.</strong>
       </p>
-      <p>
-        <strong>{state?.fio}</strong>, в благодарность мы предоставим Вам скидку{" "}
-        <strong>10%</strong> на следующий приём за отзыв на одном из сайтов:
-      </p>
       <div
         style={{
           display: "flex",
